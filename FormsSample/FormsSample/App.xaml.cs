@@ -22,7 +22,7 @@ namespace FormsSample
             var b2 = new Button { Text = "Launch Joystick Sample" };
 
             b1.Clicked += (sender, e) => Navigation.PushAsync(new UrhoPage());
-            //b2.Clicked += (sender, e) => Navigation.PushAsync(new DemoPage());    
+            b2.Clicked += (sender, e) => Navigation.PushAsync(new DemoPage());    
             Content = new StackLayout { Children = { b1, b2 }, VerticalOptions = LayoutOptions.Center };
         }
     }
@@ -30,8 +30,8 @@ namespace FormsSample
     public class DemoPage : ContentPage
     {
         UrhoSurface urhoSurface;
-        //Joystick urhoApp;
-        Charts urhoApp;
+        Joystick urhoApp;
+        //Charts urhoApp;
         public DemoPage()
         {
             urhoSurface = new UrhoSurface();
@@ -61,7 +61,8 @@ namespace FormsSample
 
         async void StartUrhoApp()
         {
-            urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null) { Orientation = ApplicationOptions.OrientationType.LandscapeAndPortrait });
+            //urhoApp = await urhoSurface.Show<Charts>(new ApplicationOptions(assetsFolder: null) { Orientation = ApplicationOptions.OrientationType.LandscapeAndPortrait });
+            urhoApp = await urhoSurface.Show<Joystick>(new ApplicationOptions(assetsFolder: null) { Orientation = ApplicationOptions.OrientationType.LandscapeAndPortrait });
         }
     }
 
